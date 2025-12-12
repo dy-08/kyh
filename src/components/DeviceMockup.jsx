@@ -1,8 +1,10 @@
 export default function DeviceMockup({ children }) {
     return (
-        <section className='min-h-screen flex items-center justify-center'>
+        <section className='flex items-center justify-center'>
             {/* 아이폰 전체: 폭 350px + 원본 비율 유지 */}
-            <div className='relative w-[350px] aspect-[1102.06/2269]'>
+            {/* 350px: rounded-[53px] */}
+            {/* 250px: rounded-[38px] */}
+            <div className='relative w-[240px] aspect-[1102.06/2269]'>
                 {/* 1. 화면 영역 (Figma Body 값 그대로 비율로 적용) */}
                 <div
                     className='
@@ -11,16 +13,17 @@ export default function DeviceMockup({ children }) {
                         bottom-[0.77%]
                         left-[1.58%]
                         right-[1.49%]
-                        rounded-[53px]
+                        rounded-[38px]
                         overflow-hidden
                         bg-black
                         box-border
                         p-[8px]
                     '
                 >
-                    <div className='w-full h-full rounded-[45px] overflow-hidden'>{children}</div>
+                    {/* 350px: rounded-[45px] */}
+                    {/* 250px: rounded-[32px] */}
+                    <div className='w-full h-full rounded-[32px] overflow-hidden'>{children}</div>
                 </div>
-                {/* 350: rounded-[45px] */}
                 {/* 2. 아이폰 프레임 PNG */}
                 <img
                     src='/images/iphone/iPhone-14-Pro.png'

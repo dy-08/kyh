@@ -1,10 +1,10 @@
 import './App.css';
-import CameraFeatureSection from './components/CameraFeatureSection';
+import DevicePreviewSection from './components/DevicePreviewSection';
 
 function App() {
     return (
-        <section>
-            <CameraFeatureSection />
+        <section className='w-full h-full bg-neutral-950'>
+            <DevicePreviewSection />
         </section>
     );
 }
