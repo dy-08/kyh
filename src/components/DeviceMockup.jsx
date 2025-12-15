@@ -4,7 +4,7 @@ export default function DeviceMockup({ children }) {
             {/* 아이폰 전체: 폭 350px + 원본 비율 유지 */}
             {/* 350px: rounded-[53px] */}
             {/* 250px: rounded-[38px] */}
-            <div className='relative w-[240px] aspect-[1102.06/2269]'>
+            <div className='relative w-[250px] aspect-[1102.06/2269]'>
                 {/* 1. 화면 영역 (Figma Body 값 그대로 비율로 적용) */}
                 <div
                     className='
