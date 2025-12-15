@@ -1,5 +1,5 @@
 import './App.css';
-import DevicePreviewSection from './components/DevicePreviewSection';
+import DevicePreviewSection from './components/devicePreview/DevicePreviewSection';
 
 function App() {
     return (

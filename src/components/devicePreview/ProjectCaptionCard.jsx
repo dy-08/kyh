@@ -1,6 +1,6 @@
 import { AiOutlineCheck } from "react-icons/ai";
 import { CgChevronRight } from "react-icons/cg";
-import TechStackIcons from "./TechStackIcons";
+import TechStackIcons from './TechStackIcons';
 
 export default function ProjectCaptionCard({ period,
     title,

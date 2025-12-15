@@ -1,4 +1,4 @@
-import { getLogoSrc } from "../utils/getLogoSrc";
+import { getLogoSrc } from "../../utils/getLogoSrc";
 
 export default function TechStackIcons({ stack = [] }) {
     return (
