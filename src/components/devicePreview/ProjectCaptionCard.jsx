@@ -8,7 +8,7 @@ export default function ProjectCaptionCard({ period,
     stack = [],
     onDetailClick, }) {
     return (
-        <section className='w-[96%] sm:w-[90%] lg:w-[80%] mx-auto box-border px-4 py-6 flex gap-6 items-start rounded-xl border-[0.5px] border-solid border-white/10'>
+        <section className='w-[96%] sm:w-[80%] lg:w-[50%] mx-auto box-border px-4 py-6 flex gap-6 items-start rounded-xl border-[0.5px] border-solid border-white/10'>
             <div className='text-gray-300/90 font-bold text-[14px] flex gap-1.5 justify-center items-center my-[3px]'>
                 <AiOutlineCheck className="text-green-400" />
                 <p className="text-xs">{period}</p>
