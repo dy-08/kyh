@@ -85,8 +85,8 @@ export default function DevicePreviewSection() {
             <section>
                 <div className='w-full scale-90 lg:scale-100 flex flex-col gap-6 justify-center items-center'>
                     {/* 공통 헤더 */}
-                    <p className='text-green-600 text-sm font-bold'>프로젝트 한눈에 보기</p>
-                    <p className='text-lg text-center text-white font-bold'>
+                    <p className='text-green-600 text-base font-bold'>프로젝트 한눈에 보기</p>
+                    <p className='text-xl text-center text-white font-bold'>
                         모바일부터, 웹까지.<br />
                         핵심 프로젝트를 순서대로 정리했어요.
                     </p>
