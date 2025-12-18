@@ -16,3 +16,8 @@
 * {
     user-select: none;
 }
+
+@theme {
+    --color-midnight: #262629;
+    --color-lightblue: #007aff;
+}

@@ -1,7 +1,6 @@
 import TechStackIcons from "../../../devicePreview/TechStackIcons";
 
 export default function Carousel({ projects }) {
-    console.log(projects)
     return (
         <section>
             <p className="text-sm text-center text-gray-300 mb-6 font-bold">.</p>
