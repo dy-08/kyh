@@ -1,23 +1,30 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 /* 스크롤은 되는데 스크롤바는 숨김 */
 .scrollbar-hide {
-    -ms-overflow-style: none;
-    /* IE/Edge */
-    scrollbar-width: none;
-    /* Firefox */
+  -ms-overflow-style: none;
+  /* IE/Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-    /* Chrome/Safari */
+  display: none;
+  /* Chrome/Safari */
 }
 
 * {
-    user-select: none;
+  user-select: none;
 }
 
 @theme {
-    --color-midnight: #262629;
-    --color-lightblue: #007aff;
+  --color-midnight: #262629;
+  --color-lightblue: #007aff;
+}
+
+video::-webkit-media-controls-play-button {
+  display: none;
+}
+video::-webkit-media-controls-timeline {
+  display: none;
 }
