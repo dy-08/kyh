@@ -6,8 +6,9 @@ export default function HeroMiniDemo() {
     const [showSkeleton, setShowSkeleton] = useState(false);
     const [showCard, setShowCard] = useState(false);
     useEffect(() => {
-        const skeleton = setTimeout(() => setShowSkeleton(true), 1000);
-        const card = setTimeout(() => setShowCard(true), 2000);
+        let skeleton = setTimeout(() => setShowSkeleton(true), 500);
+        const card = setTimeout(() => setShowCard(true), 1500);
+        skeleton = setTimeout(() => setShowSkeleton(false), 2500);
         return () => {
             clearTimeout(skeleton);
             clearTimeout(card);

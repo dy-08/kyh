@@ -4,7 +4,7 @@ import HeroSection from './components/hero/HeroSection';
 
 function App() {
     return (
-        <section className='w-full h-full bg-neutral-950'>
+        <section className='w-full h-full bg-neutral-950/98'>
             <HeroSection />
             <DevicePreviewSection />
         </section>

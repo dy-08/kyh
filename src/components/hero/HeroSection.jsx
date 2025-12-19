@@ -21,7 +21,7 @@ export default function HeroSection() {
             {/* 하단 CTA */}
             <div className="flex flex-col gap-4 items-center">
                 <CTAButton label={'프로젝트 보기'} />
-                <CTAButton label={'이력서 다운로드'} />
+                <CTAButton label={'프로필 보기'} />
                 <p className="mt-6 text-center text-sm text-zinc-400">
                     프로젝트들을 모아 정리했습니다.
                 </p>

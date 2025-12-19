@@ -7,7 +7,7 @@ import Carousel from '../common/ui/Carousel/Carousel'
 const PROJECTS = [
     {
         id: "youtube",
-        tabLabel: "유튜브\n클론코딩",
+        tabLabel: ['유투브', '클론코딩'],
         image: "/images/projects/p-react-youtube.jpg",
         period: "2025.12 - 현재",
         title: "유튜브 클론코딩",
@@ -17,7 +17,7 @@ const PROJECTS = [
     },
     {
         id: "todo",
-        tabLabel: "투두\n프로젝트",
+        tabLabel: ['투두', '프로젝트'],
         image: "/images/projects/p-react-todo.jpg",
         period: "2025.11 - 2025.12",
         title: "투두 프로젝트",
@@ -83,12 +83,12 @@ export default function DevicePreviewSection() {
         <>
             {/* mobile */}
             <section>
-                <div className='w-full scale-90 lg:scale-100 flex flex-col gap-3 justify-center items-center'>
+                <div className='w-full scale-90 lg:scale-100 flex flex-col gap-2.5 justify-center items-center'>
                     {/* 공통 헤더 */}
                     <p className='text-xs tracking-widest text-zinc-500'>프로젝트 한눈에 보기</p>
                     <p className='text-2xl text-center text-white font-bold mb-4'>
                         모바일부터, 웹까지.<br />
-                        프로젝트를 순서대로 정리했어요.
+                        <span className='block mt-0.5 mb-1'>프로젝트를 순서대로 정리했어요.</span>
                     </p>
 
                     {/* 모바일: 반응형 완료 프로젝트 */}
