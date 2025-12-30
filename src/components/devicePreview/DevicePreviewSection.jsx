@@ -120,14 +120,21 @@ export default function DevicePreviewSection() {
   const demoVideoSrc = `/videos/${demoVideoFileName}.mp4`;
 
   const [isDetailOpen, setIsDetailOpen] = useState(false);
+  const [target, setTarget] = useState(""); // "mobile" | "desktop"
+  console.log("target", target);
+  const [desktopSelected, setDesktopSelected] = useState(null);
   const toggleDetails = () => setIsDetailOpen((v) => !v);
 
   const demoProjectsRef = useRef(null);
   const mobileProjectsRef = useRef(null);
-  const goToMobileProjects = () => {
-    const el = mobileProjectsRef.current;
+  const desktopProjectsRef = useRef(null);
+
+  const goToProjects = (to = "mobile") => {
+    const el = (to === "mobile" ? mobileProjectsRef : desktopProjectsRef)
+      .current;
+    if (!el) return;
     const rect = el.getBoundingClientRect();
-    mobileProjectsRef.current.scrollIntoView({
+    el.scrollIntoView({
       behavior: "smooth",
       block: "start",
     });
@@ -138,8 +145,18 @@ export default function DevicePreviewSection() {
   };
 
   useEffect(() => {
-    if (isDetailOpen) goToMobileProjects();
-  }, [isDetailOpen]);
+    const prev = document.body.style.overflow;
+
+    if (isDetailOpen) {
+      goToProjects(target);
+      document.body.style.overflow = "hidden";
+    }
+
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [isDetailOpen, target]);
+  console.log("캐러셀 프로젝트", desktopSelected);
   return (
     <>
       {/* mobile */}
@@ -199,13 +216,14 @@ export default function DevicePreviewSection() {
                 desc={activeProject.desc}
                 stack={activeProject.stack}
                 onDetailClick={toggleDetails}
+                setTarget={setTarget}
               />
             </div>
-            {isDetailOpen && (
+            {isDetailOpen && target === "mobile" && (
               <ProjectDetailCard
                 project={activeProject}
                 toggle={toggleDetails}
-                goToMobileProjects={goToMobileProjects}
+                goToProjects={goToProjects}
               />
             )}
           </div>
@@ -224,7 +242,17 @@ export default function DevicePreviewSection() {
             Desktop Preview
           </p>
         </div>
-        <Carousel projects={DESKTOP_PROJECTS} />
+        <div ref={desktopProjectsRef}>
+          <Carousel
+            projects={DESKTOP_PROJECTS}
+            setDesktopSelected={setDesktopSelected}
+            setTarget={setTarget}
+            toggle={toggleDetails}
+          />
+        </div>
+        {isDetailOpen && target === "desktop" && (
+          <ProjectDetailCard project={desktopSelected} toggle={toggleDetails} />
+        )}
       </section>
     </>
   );

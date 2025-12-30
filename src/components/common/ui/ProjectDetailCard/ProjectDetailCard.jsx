@@ -1,15 +1,11 @@
 import TechStackIcons from "../../../devicePreview/TechStackIcons";
 import { MdClose } from "react-icons/md";
 
-export default function ProjectDetailCard({
-  project,
-  toggle,
-  goToMobileProjects,
-}) {
+export default function ProjectDetailCard({ project, toggle, goToProjects }) {
   return (
-    <section className='absolute inset-0 bg-zinc-900/90 backdrop-blur-sm rounded-xl overflow-hidden'>
+    <section className='fixed inset-0 bg-zinc-900/90 backdrop-blur-sm rounded-xl overflow-hidden'>
       <div className='p-3 pl-6 bg-white/10 text-white/50 text-sm flex justify-between items-center'>
-        <p onClick={goToMobileProjects}>프로젝트 상세보기</p>
+        <p onClick={goToProjects}>프로젝트 상세보기</p>
         <MdClose
           className='text-lg cursor-pointer
 '
