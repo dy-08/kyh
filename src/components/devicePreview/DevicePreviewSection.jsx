@@ -121,7 +121,7 @@ export default function DevicePreviewSection({ ref }) {
 
   const [isDetailOpen, setIsDetailOpen] = useState(false);
   const [target, setTarget] = useState(""); // "mobile" | "desktop"
-  console.log("target", target);
+
   const [desktopSelected, setDesktopSelected] = useState(null);
   const toggleDetails = () => setIsDetailOpen((v) => !v);
 
@@ -155,7 +155,7 @@ export default function DevicePreviewSection({ ref }) {
       document.body.style.overflow = prev;
     };
   }, [isDetailOpen, target]);
-  console.log("캐러셀 프로젝트", desktopSelected);
+
   return (
     <>
       {/* mobile */}
