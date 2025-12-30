@@ -95,7 +95,7 @@ const DESKTOP_PROJECTS = PROJECTS.filter((p) =>
 console.log("MOBILE_PROJECTS", MOBILE_PROJECTS);
 console.log("DESKTOP_PROJECTS", DESKTOP_PROJECTS);
 
-export default function DevicePreviewSection() {
+export default function DevicePreviewSection({ ref }) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const [renderIndex, setRenderIndex] = useState(0);
@@ -125,7 +125,6 @@ export default function DevicePreviewSection() {
   const [desktopSelected, setDesktopSelected] = useState(null);
   const toggleDetails = () => setIsDetailOpen((v) => !v);
 
-  const demoProjectsRef = useRef(null);
   const mobileProjectsRef = useRef(null);
   const desktopProjectsRef = useRef(null);
 
@@ -161,7 +160,7 @@ export default function DevicePreviewSection() {
     <>
       {/* mobile */}
       <section>
-        <div ref={demoProjectsRef} className='w-full'>
+        <div ref={ref} className='w-full'>
           <div className='w-full scale-90 flex flex-col gap-2.5 justify-center items-cente'>
             {/* 공통 헤더 */}
             <p className='text-xs tracking-widest text-center text-zinc-500'>
