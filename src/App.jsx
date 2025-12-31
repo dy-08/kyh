@@ -16,7 +16,7 @@ function App() {
     });
 
     setTimeout(() => {
-      window.scrollBy({ top: rect.top - 50, left: 0, behavior: "smooth" });
+      window.scrollBy({ top: rect.top - 30, left: 0, behavior: "smooth" });
     }, 0);
   };
   return (

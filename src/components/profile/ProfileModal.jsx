@@ -1,37 +1,126 @@
 export default function ProfileModal() {
   return (
-    <div className='text-white p-8 fixed top-0 left-0 right-0 bottom-1/4 bg-zinc-900/90 backdrop-blur-sm rounded-xl overflow-hidden'>
-      <p className='text-sm flex justify-center'>
-        시도하고 개선하는 개발자 권영호입니다.
-      </p>
-      {/* 사진 */}
+    <div className='flex flex-col justify-around text-white px-6 py-4 fixed top-0 left-0 right-0 bottom-46 bg-zinc-900/90 backdrop-blur-sm rounded-xl overflow-y-auto'>
       <div>
-        <div className='w-[80px] h-[80px] rounded-sm overflow-hidden mt-10'>
+        <p className='text-[1.1rem] font-semibold flex justify-center'>
+          권영호
+        </p>
+        <p className='text-[0.9rem] font-semibold text-white/50 flex justify-center'>
+          웹 프론트엔드 엔지니어
+        </p>
+      </div>
+      <div className='backdrop-blur-lg flex py-4 justify-around items-center bg-white/8 rounded-lg'>
+        {/* 사진 */}
+        <div className='w-[120px] h-[120px] rounded-sm overflow-hidden'>
           <img
             className='w-full object-cover'
             src='/images/avatar/kyh.jpg'
-            alt=''
+            alt='프로필 사진'
           />
         </div>
-        <div>
+        <div
+          className='text-[0.9rem] px-2 box-border
+'
+        >
           {/* pi */}
           <div className='flex gap-2'>
+            <span>·</span>
+            <p className='text-white/50'> Email</p>
             <p>oioixo20@gmail.com</p>
           </div>
           <div className='flex gap-2'>
+            <span>·</span>
+            <p className='text-white/50'>Phone</p>
             <p>01080729309</p>
           </div>
+          {/* skill */}
           <div className='flex gap-2'>
-            <p>https://github.com/dy-08</p>
+            <span>·</span>
+            <p className='text-white/50'>Stack</p>
+            <p>JS(ES6), React+Vite</p>
+          </div>
+          <div className='flex gap-2'>
+            <span>·</span>
+            <p className='text-white/50'>Git</p>
+            <a href='https://github.com/dy-08' target='_blank'>
+              github.com/dy-08
+            </a>
+          </div>
+          <div className='flex gap-2'>
+            <span>·</span>
+            <p className='text-white/50'>Blog</p>
+            <a href='https://dev-xoxo.tistory.com/' target='_blank'>
+              dev-xoxo.tistory.com
+            </a>
           </div>
         </div>
       </div>
-      {/* skill */}
-      <div>
-        <p>JS(ES6+), React, TailwindCSS</p>
-      </div>
       {/* education */}
-      <div></div>
+      {/* 1 */}
+      <section className='text-sm flex flex-col gap-1'>
+        <p className='text-yellow-600 font-semibold'>교육</p>
+        <div className='flex gap-4'>
+          <div className='text-sm flex flex-col gap-1'>
+            <p>
+              생성형 AI 활용
+              <br /> 개발자 양성 과정
+            </p>
+            <p className='text-xs text-white/50'>(라인컴퓨터아트학원)</p>
+            <p className='text-sm text-white/50'>2025.07-2026.01</p>
+          </div>
+          <ul className='text-sm'>
+            <li>
+              <span className='mr-2'>·</span>JavaScript(ES6)
+            </li>
+            <li>
+              <span className='mr-2'>·</span>React (Components/Hooks)
+            </li>
+            <li>
+              <span className='mr-2'>·</span>TypeScript · Next.js
+            </li>
+            <li>
+              <span className='mr-2'>·</span>Node.js · Express
+            </li>
+            <li>
+              <span className='mr-2'>·</span>MySQL · GCP (DBeaver)
+            </li>
+          </ul>
+        </div>
+        <div>
+          <div className='text-sm flex gap-6'>
+            <p className='text-white/50'>2024.01-2024.02</p>
+            <p>이젠 DX교육센터 (Vanilla JS)</p>
+          </div>
+          <div className='text-sm flex gap-6'>
+            <p className='text-white/50'>2019.11-2020.04</p>
+            <p>그린 (UI/UX)</p>
+          </div>
+          <div className='text-sm flex gap-6'>
+            <p className='text-white/50'>2017.08-2017.08</p>
+            <p>KISA (인터넷 거버넌스 교육)</p>
+          </div>
+        </div>
+      </section>
+      {/* 2 */}
+      <section className='text-sm flex flex-col gap-1'>
+        <p className='text-yellow-600 font-semibold'>자격증</p>
+        <div>
+          <div className='text-sm flex gap-20'>
+            <p className='text-white/50'>2025.12</p>
+            <p>웹디자인개발기능사</p>
+          </div>
+        </div>
+      </section>
+      {/* 3 */}
+      <section className='text-sm flex flex-col gap-1'>
+        <p className='text-yellow-600 font-semibold'>학력</p>
+        <div>
+          <div className='text-sm flex gap-6'>
+            <p className='text-white/50'>2012.03-2019.02</p>
+            <p>경동대학교</p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
