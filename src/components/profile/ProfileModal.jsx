@@ -1,6 +1,8 @@
+import { FaExternalLinkAlt } from "react-icons/fa";
+
 export default function ProfileModal() {
   return (
-    <div className='w-full h-[74svh] flex flex-col text-white fixed top-0 left-0 right-0 bottom-46 bg-zinc-900/80 backdrop-blur-sm rounded-xl'>
+    <div className='w-full h-[78svh] flex flex-col text-white fixed top-0 left-0 right-0 bottom-46 bg-zinc-900/80 backdrop-blur-sm rounded-xl'>
       <div className='w-full h-full flex flex-col justify-between'>
         <div className='px-4 pt-4'>
           <p className='text-[1.1rem] font-semibold flex justify-center'>
@@ -10,7 +12,7 @@ export default function ProfileModal() {
             웹 프론트엔드 엔지니어
           </p>
         </div>
-        <div className='backdrop-blur-lg flex mx-2 py-4 justify-around items-center bg-white/8 rounded-lg backdrop-blur-xs'>
+        <div className='backdrop-blur-lg flex mx-2 py-4 justify-around items-center rounded-lg backdrop-blur-xs'>
           {/* 사진 */}
           <div className='w-[120px] h-[120px] rounded-sm overflow-hidden'>
             <img
@@ -26,39 +28,50 @@ export default function ProfileModal() {
             {/* pi */}
             <div className='flex gap-2'>
               <span>·</span>
-              <p className='text-white/50'> Email</p>
+              <p className='text-white'> Email</p>
               <p>oioixo20@gmail.com</p>
             </div>
             <div className='flex gap-2'>
               <span>·</span>
-              <p className='text-white/50'>Phone</p>
+              <p className='text-white'>Phone</p>
               <p>01080729309</p>
             </div>
             {/* skill */}
             <div className='flex gap-2'>
               <span>·</span>
-              <p className='text-white/50'>Stack</p>
-              <p>JS(ES6), React+Vite</p>
-            </div>
-            <div className='flex gap-2'>
-              <span>·</span>
-              <p className='text-white/50'>Git</p>
-              <a href='https://github.com/dy-08' target='_blank'>
+              <p className='text-white'>Git</p>
+              <a
+                className='text-white/50 hover:text-white duration-300 ease-in-out'
+                href='https://github.com/dy-08'
+                target='_blank'
+              >
                 github.com/dy-08
+                <FaExternalLinkAlt
+                  className='inline-block ml-2 text-xs
+'
+                />
               </a>
             </div>
             <div className='flex gap-2'>
               <span>·</span>
-              <p className='text-white/50'>Blog</p>
-              <a href='https://dev-xoxo.tistory.com/' target='_blank'>
+              <p className='text-white'>Blog</p>
+              <a
+                className='text-white/50 hover:text-white transition duration-300 ease-in-out'
+                href='https://dev-xoxo.tistory.com/'
+                target='_blank'
+              >
                 dev-xoxo.tistory.com
+                <FaExternalLinkAlt
+                  className='inline-block ml-2 text-xs
+'
+                />
               </a>
             </div>
           </div>
         </div>
         {/* education */}
         {/* 1 */}
-        <section className='text-sm flex flex-col gap-1 px-4'>
+        <section className='text-sm flex flex-col gap-2 px-4'>
           <p className='text-yellow-600 font-semibold'>교육</p>
           <div className='flex gap-4'>
             <div className='text-sm flex flex-col gap-1'>
@@ -84,7 +97,8 @@ export default function ProfileModal() {
               </li>
             </ul>
           </div>
-          <div>
+          <div className='w-full border border-white/50 border mt-1 origin-top scale-y-1'></div>
+          <div className='mt-1'>
             <div className='text-sm flex gap-6'>
               <p className='text-white/50'>2024.01-2024.02</p>
               <p>이젠 DX교육센터 (Vanilla JS)</p>
