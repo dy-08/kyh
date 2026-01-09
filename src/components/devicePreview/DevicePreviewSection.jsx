@@ -230,7 +230,7 @@ export default function DevicePreviewSection({ ref }) {
       </section>
       {/* desktop */}
       <section className='scale-90'>
-        <div className='flex flex-col items-center'>
+        <div className='flex flex-col items-center' ref={desktopProjectsRef}>
           <p
             className='inline-flex justify-center items-center gap-2
   px-3 py-1.5 rounded-full
@@ -241,7 +241,7 @@ export default function DevicePreviewSection({ ref }) {
             Desktop Preview
           </p>
         </div>
-        <div ref={desktopProjectsRef}>
+        <div>
           <Carousel
             projects={DESKTOP_PROJECTS}
             setDesktopSelected={setDesktopSelected}

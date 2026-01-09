@@ -1,13 +1,32 @@
 import CTAButton from "../common/ui/CTAButton/CTAButton";
 import HeroMiniDemo from "./HeroMiniDemo";
 import ProfileModal from "../profile/ProfileModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Lottie from "react-lottie-player";
 import lottieJson from "../../lottie/programmingCode.json";
 
 export default function HeroSection({ onProjectClick }) {
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
   console.log("isProfileModalOpen", isProfileModalOpen);
+
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+
+    if (isProfileModalOpen) {
+      document.body.style.overflow = "hidden";
+    }
+
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [isProfileModalOpen]);
+
+  const [isDisabled, setIsDisabled] = useState(false);
+  const handleClick = () => {
+    setIsDisabled((isDisabled) => !isDisabled);
+    setIsProfileModalOpen((p) => !p);
+  };
+
   return (
     <section className='h-svh rounded-3xl pb-4 flex flex-col justify-between relative box-border'>
       {/* 상단 텍스트 */}
@@ -44,11 +63,12 @@ export default function HeroSection({ onProjectClick }) {
 
       {/* 하단 CTA */}
       <div className='flex flex-col gap-4 items-center scale-90'>
-        <CTAButton onClick={onProjectClick} label={"프로젝트 보기"} />
         <CTAButton
-          onClick={() => setIsProfileModalOpen((p) => !p)}
-          label={"프로필 보기"}
+          onClick={onProjectClick}
+          label={"프로젝트 보기"}
+          isDisabled={isDisabled}
         />
+        <CTAButton onClick={handleClick} label={"프로필 보기"} />
         <p className='mt-2 text-center text-sm text-zinc-400'>
           프로젝트들을 모아 정리했습니다.
         </p>
