@@ -32,21 +32,23 @@ export default function GiscusGuestbook() {
   }, []);
 
   return (
-    <>
+    <section className='mt-10'>
       <div className='w-full scale-90 flex flex-col gap-2.5 justify-center items-cente'>
         {/* 공통 헤더 */}
         <p className='text-xs tracking-widest text-center text-zinc-500'>
-          프로젝트 한눈에 보기
+          댓글 · 피드백 남기기
         </p>
-        <p className='text-2xl text-center text-white mb-4'>
-          모바일부터, 웹까지.
+        <p className='text-lg text-center text-white mb-4'>
+          한 줄 피드백으로 더 좋아집니다.
           <br />
           <span className='block mt-0.5 mb-1'>
-            프로젝트를 순서대로 정리했어요.
+            채용·협업은 이메일/링크로 남겨주세요.
           </span>
         </p>
       </div>
-      <div ref={ref} className='giscus' />;
-    </>
+      <div className='scale-90'>
+        <div ref={ref} className='giscus' />;
+      </div>
+    </section>
   );
 }

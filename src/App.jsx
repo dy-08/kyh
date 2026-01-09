@@ -26,7 +26,7 @@ function App() {
   }, []);
 
   return (
-    <section className='w-full h-full bg-neutral-950/98'>
+    <section className='w-full h-full bg-neutral-950/98 flex flex-col gap-6'>
       <HeroSection onProjectClick={scrollToProject} />
       <DevicePreviewSection ref={demoPreviewRef} />
       <GiscusGuestbook />
