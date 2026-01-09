@@ -38,7 +38,7 @@ export default function GiscusGuestbook() {
         <p className='text-xs tracking-widest text-center text-zinc-500'>
           댓글 · 피드백 남기기
         </p>
-        <p className='text-lg text-center text-white mb-4'>
+        <p className='text-xl text-center text-white mb-4'>
           한 줄 피드백으로 더 좋아집니다.
           <br />
           <span className='block mt-0.5 mb-1'>

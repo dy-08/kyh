@@ -4,6 +4,7 @@ import DevicePreviewSection from "./components/devicePreview/DevicePreviewSectio
 import HeroSection from "./components/hero/HeroSection";
 import { listGuestbook } from "./shared/api/guestbook";
 import GiscusGuestbook from "./components/guestbook/GiscusGuestbook";
+import Footer from "./components/common/ui/Footer/Footer";
 
 function App() {
   const demoPreviewRef = useRef(null);
@@ -26,10 +27,11 @@ function App() {
   }, []);
 
   return (
-    <section className='w-full h-full bg-neutral-950/98 flex flex-col gap-6'>
+    <section className='w-full h-full bg-[#0d1117] flex flex-col gap-6 box-border'>
       <HeroSection onProjectClick={scrollToProject} />
       <DevicePreviewSection ref={demoPreviewRef} />
       <GiscusGuestbook />
+      <Footer />
     </section>
   );
 }

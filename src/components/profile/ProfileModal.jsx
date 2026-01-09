@@ -2,7 +2,7 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 
 export default function ProfileModal() {
   return (
-    <div className='w-full h-[78svh] flex flex-col text-white fixed top-0 left-0 right-0 bottom-46 bg-zinc-900/80 backdrop-blur-sm rounded-xl'>
+    <div className='scale-90 w-full h-[78svh] flex flex-col text-white fixed top-0 left-0 right-0 bottom-46 bg-zinc-900/80 backdrop-blur-sm rounded-xl'>
       <div className='w-full h-full flex flex-col justify-between'>
         <div className='px-4 pt-4'>
           <p className='text-[1.1rem] font-semibold flex justify-center'>
