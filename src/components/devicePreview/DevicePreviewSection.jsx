@@ -163,10 +163,10 @@ export default function DevicePreviewSection({ ref }) {
         <div ref={ref} className='w-full'>
           <div className='w-full scale-90 flex flex-col gap-2.5 justify-center items-cente'>
             {/* 공통 헤더 */}
-            <p className='text-xs tracking-widest text-center text-zinc-500'>
+            <p className='text-xl tracking-widest text-center text-white'>
               프로젝트 한눈에 보기
             </p>
-            <p className='text-2xl text-center text-white mb-4'>
+            <p className='text-xs text-center text-zinc-500 mb-4'>
               모바일부터, 웹까지.
               <br />
               <span className='block mt-0.5 mb-1'>

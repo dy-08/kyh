@@ -1,7 +1,7 @@
 import CTAButton from "../common/ui/CTAButton/CTAButton";
 import HeroMiniDemo from "./HeroMiniDemo";
 import ProfileModal from "../profile/ProfileModal";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Lottie from "react-lottie-player";
 import lottieJson from "../../lottie/programmingCode.json";
 
@@ -12,6 +12,7 @@ export default function HeroSection({ onProjectClick }) {
   useEffect(() => {
     const prev = document.body.style.overflow;
 
+    //
     if (isProfileModalOpen) {
       document.body.style.overflow = "hidden";
     }
@@ -23,17 +24,43 @@ export default function HeroSection({ onProjectClick }) {
 
   const [isDisabled, setIsDisabled] = useState(false);
   const handleClick = () => {
+    //
+    console.log("isDisabled", isDisabled);
+    console.log("isProfileModalOpen", isProfileModalOpen);
     setIsDisabled((isDisabled) => !isDisabled);
     setIsProfileModalOpen((p) => !p);
+    gotoTop();
+  };
+  const heroRef = useRef(null);
+  const HEADER_OFFSET = 0;
+
+  const gotoTop = () => {
+    const el = heroRef.current;
+    if (!el) return;
+    console.log("scrollY", window.scrollY);
+    console.log("top", el.getBoundingClientRect().top);
+
+    const y = window.scrollY + el.getBoundingClientRect().top - HEADER_OFFSET;
+    window.scrollTo({ top: y, behavior: "smooth" });
+  };
+  const closeProfileModal = () => {
+    if (isProfileModalOpen) {
+      setIsProfileModalOpen(false);
+      setIsDisabled((isDisabled) => !isDisabled);
+    }
   };
 
   return (
-    <section className='h-svh rounded-3xl pb-4 flex flex-col justify-between relative box-border'>
+    <section
+      ref={heroRef}
+      className='h-svh rounded-3xl pb-4 flex flex-col justify-between relative box-border relative z-11'
+      onClick={closeProfileModal}
+    >
       {/* 상단 텍스트 */}
       <div>
         <div className='w-full text-sm md:text-lg text-white bg-[#010409] rounded-lg backdrop-blur-sm'>
           <div className='text-xs leading-relaxed text-white/95 p-4'>
-            <div className='flex justify-end'>
+            <div className='flex justify-first'>
               <span className='inline-flex items-center box-border gap-1 px-1 h-[34px] leading-none rounded-md font-semibold text-[#dfefea]'>
                 <span className='leading-none ml-1 mb-1'>
                   시도하고 개선하는 개발자
@@ -46,7 +73,7 @@ export default function HeroSection({ onProjectClick }) {
                 />
               </span>
             </div>
-            <div className='flex flex-col gap-[0.5px] mt-1'>
+            <div className='flex flex-col gap-[0.5px] mt-1 pl-2'>
               <p>안녕하세요, 권영호입니다.</p>
               <p>작은시도와 개선을 쌓으며 성장하고 있습니다.</p>
               <p>React로 UI와 데이터 흐름에 관심을 가지고,</p>
@@ -68,7 +95,11 @@ export default function HeroSection({ onProjectClick }) {
           label={"프로젝트 보기"}
           isDisabled={isDisabled}
         />
-        <CTAButton onClick={handleClick} label={"프로필 보기"} />
+        <CTAButton
+          className='relative z-1'
+          onClick={handleClick}
+          label={"프로필 보기"}
+        />
         <p className='mt-2 text-center text-sm text-zinc-400'>
           프로젝트들을 모아 정리했습니다.
         </p>

@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className='w-full'>
-      <div className='w-full h-[56px] bg-[#010409] text-[#919aa1] text-xs flex flex-col items-center justify-center gap-1'>
+      <div className='w-full h-[64px] bg-[#010409]  text-[#919aa1] text-xs flex flex-col items-center justify-center gap-1'>
         <p>
           Copyright © 2026 by{" "}
           <a
@@ -12,7 +12,7 @@ export default function Footer() {
             YounghoKwon
           </a>
         </p>
-        <p>Last updated: 2026-01-09</p>
+        <p>Last updated: 2026-01-20</p>
       </div>
     </footer>
   );
