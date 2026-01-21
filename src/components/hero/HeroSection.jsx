@@ -27,7 +27,7 @@ export default function HeroSection({ onProjectClick }) {
     //
     console.log("isDisabled", isDisabled);
     console.log("isProfileModalOpen", isProfileModalOpen);
-    setIsDisabled((isDisabled) => !isDisabled);
+    setIsDisabled(true);
     setIsProfileModalOpen((p) => !p);
     gotoTop();
   };

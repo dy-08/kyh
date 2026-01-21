@@ -12,7 +12,7 @@ export default function Footer() {
             YounghoKwon
           </a>
         </p>
-        <p>Last updated: 2026-01-20</p>
+        <p>Last updated: 2026-01-21</p>
       </div>
     </footer>
   );
