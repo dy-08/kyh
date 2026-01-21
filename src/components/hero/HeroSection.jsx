@@ -1,45 +1,103 @@
 import CTAButton from "../common/ui/CTAButton/CTAButton";
 import HeroMiniDemo from "./HeroMiniDemo";
 import ProfileModal from "../profile/ProfileModal";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Lottie from "react-lottie-player";
+import lottieJson from "../../lottie/programmingCode.json";
 
 export default function HeroSection({ onProjectClick }) {
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
   console.log("isProfileModalOpen", isProfileModalOpen);
+
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+
+    //
+    if (isProfileModalOpen) {
+      document.body.style.overflow = "hidden";
+    }
+
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [isProfileModalOpen]);
+
+  const [isDisabled, setIsDisabled] = useState(false);
+  const handleClick = () => {
+    //
+    console.log("isDisabled", isDisabled);
+    console.log("isProfileModalOpen", isProfileModalOpen);
+    setIsDisabled(true);
+    setIsProfileModalOpen((p) => !p);
+    gotoTop();
+  };
+  const heroRef = useRef(null);
+  const HEADER_OFFSET = 0;
+
+  const gotoTop = () => {
+    const el = heroRef.current;
+    if (!el) return;
+    console.log("scrollY", window.scrollY);
+    console.log("top", el.getBoundingClientRect().top);
+
+    const y = window.scrollY + el.getBoundingClientRect().top - HEADER_OFFSET;
+    window.scrollTo({ top: y, behavior: "smooth" });
+  };
+  const closeProfileModal = () => {
+    if (isProfileModalOpen) {
+      setIsProfileModalOpen(false);
+      setIsDisabled((isDisabled) => !isDisabled);
+    }
+  };
+
   return (
-    <section className='h-svh rounded-3xl p-4 scale-90 flex flex-col justify-between relative box-border'>
+    <section
+      ref={heroRef}
+      className='h-svh rounded-3xl pb-4 flex flex-col justify-between relative box-border relative z-11'
+      onClick={closeProfileModal}
+    >
       {/* 상단 텍스트 */}
       <div>
-        <div className='text-sm md:text-lg text-white leading-relaxed bg-white/8 rounded-lg backdrop-blur-sm'>
-          <div className='text-sm leading-relaxed text-zinc-100 px-4 pt-4 pb-10'>
-            안녕하세요,
-            <br />
-            시도하고 개선하는 개발자 권영호입니다.
-            <br />
-            매일 작은 개선을 쌓으며 성장하고 있습니다.
-            <br />
-            React로 UI 구조와 데이터 흐름을 정리합니다.
-            <br />
-            사용자가 편해지는 지점을 계속 찾고있습니다.
-            <br />
-            <br />
-            <span className='float-right block text-white/50'>
-              2025년 12월 31일 업데이트
-            </span>
+        <div className='w-full text-sm md:text-lg text-white bg-[#010409] rounded-lg backdrop-blur-sm'>
+          <div className='text-xs leading-relaxed text-white/95 p-4'>
+            <div className='flex justify-first'>
+              <span className='inline-flex items-center box-border gap-1 px-1 h-[34px] leading-none rounded-md font-semibold text-[#dfefea]'>
+                <span className='leading-none ml-1 mb-1'>
+                  시도하고 개선하는 개발자
+                </span>
+                <Lottie
+                  loop
+                  animationData={lottieJson}
+                  play
+                  style={{ width: 34, height: 34, display: "block" }}
+                />
+              </span>
+            </div>
+            <div className='flex flex-col gap-[0.5px] mt-1 pl-2'>
+              <p>안녕하세요, 권영호입니다.</p>
+              <p>작은시도와 개선을 쌓으며 성장하고 있습니다.</p>
+              <p>React로 UI와 데이터 흐름에 관심을 가지고,</p>
+              <p>사용자가 편해지는 지점을 계속 찾아가고있습니다.</p>
+            </div>
           </div>
         </div>
       </div>
 
       {/* 데모 */}
-      <div>
+      <div className='scale-90 relative top-16'>
         <HeroMiniDemo />
       </div>
 
       {/* 하단 CTA */}
-      <div className='flex flex-col gap-4 items-center'>
-        <CTAButton onClick={onProjectClick} label={"프로젝트 보기"} />
+      <div className='flex flex-col gap-4 items-center scale-90'>
         <CTAButton
-          onClick={() => setIsProfileModalOpen((p) => !p)}
+          onClick={onProjectClick}
+          label={"프로젝트 보기"}
+          isDisabled={isDisabled}
+        />
+        <CTAButton
+          className='relative z-1'
+          onClick={handleClick}
           label={"프로필 보기"}
         />
         <p className='mt-2 text-center text-sm text-zinc-400'>

@@ -27,6 +27,12 @@ const PROJECTS = [
     targets: ["mobile", "desktop"],
     isFeatured: true,
     link: "https://academy-attendance.netlify.app/login",
+    highlights: {
+      tech: "React+TS로 UI 구성, Node(Express)·Prisma로 API 연결, Postgres(Supabase) 연동",
+      issue:
+        "배포 환경변수 설정이 어긋나면 인증/데이터 연결이 끊겨 원인 파악이 어려움",
+      fix: "env·설정 절차를 문서화하고 프론트–API–DB 흐름을 정리해 재현 가능하게 개선",
+    },
   },
   {
     id: "Youtube",
@@ -39,6 +45,11 @@ const PROJECTS = [
     targets: ["mobile"],
     link: "https://react-youtube-ashy.vercel.app/",
     apis: ["YouTube Data API"],
+    highlights: {
+      tech: "YouTube Data API로 검색·상세·관련영상 구현, Tailwind 반응형, TanStack Query 적용",
+      issue: "로딩/에러/빈 결과 처리 방식이 화면마다 달라 UX가 일관되지 않음",
+      fix: "Query 상태 기준으로 Skeleton·에러 UI를 통일하고 데이터 흐름(요청→표시)을 표준화",
+    },
   },
   {
     id: "Todo",
@@ -50,6 +61,12 @@ const PROJECTS = [
     stack: ["react", "vite", "tailwindCSS", "netlify"],
     targets: ["mobile"],
     link: "https://react-vite-todos.netlify.app/",
+    highlights: {
+      tech: "React로 Todo CRUD 구현, 필터와 다크모드 적용, localStorage로 데이터 유지",
+      issue:
+        "원본 목록과 필터 목록을 함께 다루며 상태가 꼬이고 초기 복원 타이밍이 흔들림",
+      fix: "원본/파생 목록을 분리하고 useEffect로 저장·복원 순서를 정리해 상태 흐름을 안정화",
+    },
   },
   {
     id: "Erom",
@@ -61,6 +78,12 @@ const PROJECTS = [
     stack: ["html", "css", "javascript", "github"],
     targets: ["desktop"],
     link: "https://dy-08.github.io/erom/",
+    highlights: {
+      tech: "Vanilla JS로 원페이지 스크롤 구성, 풀메뉴(GNB) 토글, 슬라이드 인터랙션 구현",
+      issue:
+        "스크롤 이벤트가 많아지면 성능이 떨어지고 메뉴 열림/닫힘 상태가 꼬이기 쉬움",
+      fix: "필요 구간에만 이벤트를 적용하고 메뉴 상태를 단일 기준으로 관리해 동작을 예측 가능하게",
+    },
   },
   {
     id: "GUESS",
@@ -72,6 +95,12 @@ const PROJECTS = [
     stack: ["html", "css", "javascript", "github"],
     targets: ["desktop"],
     link: "https://dy-08.github.io/guess/",
+    highlights: {
+      tech: "Vanilla JS로 원페이지 랜딩 구성, 페이드 전환 무한 슬라이더 구현",
+      issue:
+        "무한 루프 구간에서 인덱스/전환 타이밍이 틀어지면 전환이 부자연스러워짐",
+      fix: "인덱스 상태로 전환 로직을 고정하고 처음/끝 연결 케이스를 처리해 자연스럽게 순환",
+    },
   },
   {
     id: "Woodin",
@@ -83,13 +112,19 @@ const PROJECTS = [
     stack: ["html", "css", "javascript", "github"],
     targets: ["desktop"],
     link: "https://dy-08.github.io/woodin/",
+    highlights: {
+      tech: "휠 스크롤로 섹션 스냅 이동 구현, 영상과 호버 효과를 결합한 원페이지 클론",
+      issue:
+        "연속 휠 입력으로 섹션이 과도하게 이동해 UX가 흔들리고 제어가 어려움",
+      fix: "입력 간격/조건으로 이동을 제어하고 섹션·효과 로직을 분리해 유지보수성을 개선",
+    },
   },
 ];
 const MOBILE_PROJECTS = PROJECTS.filter((p) =>
-  p.targets.find((e) => e === "mobile")
+  p.targets.find((e) => e === "mobile"),
 );
 const DESKTOP_PROJECTS = PROJECTS.filter((p) =>
-  p.targets.find((e) => e === "desktop")
+  p.targets.find((e) => e === "desktop"),
 );
 
 console.log("MOBILE_PROJECTS", MOBILE_PROJECTS);
@@ -163,10 +198,10 @@ export default function DevicePreviewSection({ ref }) {
         <div ref={ref} className='w-full'>
           <div className='w-full scale-90 flex flex-col gap-2.5 justify-center items-cente'>
             {/* 공통 헤더 */}
-            <p className='text-xs tracking-widest text-center text-zinc-500'>
+            <p className='text-xl tracking-widest text-center text-white'>
               프로젝트 한눈에 보기
             </p>
-            <p className='text-2xl text-center text-white mb-4'>
+            <p className='text-xs text-center text-zinc-500 mb-4'>
               모바일부터, 웹까지.
               <br />
               <span className='block mt-0.5 mb-1'>
@@ -218,19 +253,19 @@ export default function DevicePreviewSection({ ref }) {
                 setTarget={setTarget}
               />
             </div>
-            {isDetailOpen && target === "mobile" && (
-              <ProjectDetailCard
-                project={activeProject}
-                toggle={toggleDetails}
-                goToProjects={goToProjects}
-              />
-            )}
           </div>
         </div>
       </section>
+      {isDetailOpen && target === "mobile" && (
+        <ProjectDetailCard
+          project={activeProject}
+          toggle={toggleDetails}
+          goToProjects={goToProjects}
+        />
+      )}
       {/* desktop */}
       <section className='scale-90'>
-        <div className='flex flex-col items-center'>
+        <div className='flex flex-col items-center' ref={desktopProjectsRef}>
           <p
             className='inline-flex justify-center items-center gap-2
   px-3 py-1.5 rounded-full
@@ -241,7 +276,7 @@ export default function DevicePreviewSection({ ref }) {
             Desktop Preview
           </p>
         </div>
-        <div ref={desktopProjectsRef}>
+        <div>
           <Carousel
             projects={DESKTOP_PROJECTS}
             setDesktopSelected={setDesktopSelected}
@@ -249,10 +284,10 @@ export default function DevicePreviewSection({ ref }) {
             toggle={toggleDetails}
           />
         </div>
-        {isDetailOpen && target === "desktop" && (
-          <ProjectDetailCard project={desktopSelected} toggle={toggleDetails} />
-        )}
       </section>
+      {isDetailOpen && target === "desktop" && (
+        <ProjectDetailCard project={desktopSelected} toggle={toggleDetails} />
+      )}
     </>
   );
 }
