@@ -58,11 +58,11 @@ export default function HeroSection({ onProjectClick }) {
     >
       {/* 상단 텍스트 */}
       <div>
-        <div className='w-full text-sm md:text-lg text-white bg-[#010409] rounded-lg backdrop-blur-sm'>
-          <div className='text-xs leading-relaxed text-white/95 p-4'>
+        <div className='w-full text-white bg-[#010409] rounded-lg backdrop-blur-sm'>
+          <div className='leading-relaxed text-white/95 p-4'>
             <div className='flex justify-first'>
               <span className='inline-flex items-center box-border gap-1 px-1 h-[34px] leading-none rounded-md font-semibold text-[#dfefea]'>
-                <span className='leading-none ml-1 mb-1'>
+                <span className='text-base font-semibold leading-none ml-1 mb-1'>
                   시도하고 개선하는 개발자
                 </span>
                 <Lottie
@@ -73,7 +73,7 @@ export default function HeroSection({ onProjectClick }) {
                 />
               </span>
             </div>
-            <div className='flex flex-col gap-[0.5px] mt-1 pl-2'>
+            <div className='text-sm flex flex-col gap-[0.5px] mt-1 pl-2'>
               <p>안녕하세요, 권영호입니다.</p>
               <p>작은시도와 개선을 쌓으며 성장하고 있습니다.</p>
               <p>React로 UI와 데이터 흐름에 관심을 가지고,</p>
@@ -84,7 +84,7 @@ export default function HeroSection({ onProjectClick }) {
       </div>
 
       {/* 데모 */}
-      <div className='scale-90 relative top-16'>
+      <div className='scale-90 relative top-12'>
         <HeroMiniDemo />
       </div>
 
@@ -100,7 +100,7 @@ export default function HeroSection({ onProjectClick }) {
           onClick={handleClick}
           label={"프로필 보기"}
         />
-        <p className='mt-2 text-center text-sm text-zinc-400'>
+        <p className='mt-2 text-center text-base text-zinc-400'>
           프로젝트들을 모아 정리했습니다.
         </p>
       </div>

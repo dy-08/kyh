@@ -30,18 +30,17 @@ export default function Carousel({
                 />
               </div>
               <div className='w-full mt-4 px-3'>
-                <div className='w-full text-white text-xs font-semibold flex items-center'>
-                  <span className='text-base'>{projects[i].title}</span>
-                  <span className='ml-1 text-xs text-zinc-400 font-semibold pt-1'>
-                    {" "}
-                    · {projects[i].period}
+                <div className='w-full text-white font-semibold flex flex-col'>
+                  <span className='text-lg'>{projects[i].title}</span>
+                  <span className='text-sm text-zinc-400 font-semibold'>
+                    {projects[i].period}
                   </span>
                 </div>
-                <div className='text-xs text-zinc-400 font-semibold mt-1'>
+                <div className='text-sm text-zinc-400 font-semibold mt-1'>
                   {projects[i].desc}
                 </div>
                 <div className='mt-0.3 flex items-center gap-1 opacity-90'>
-                  <TechStackIcons stack={projects[i].stack} size={23} />
+                  <TechStackIcons stack={projects[i].stack} size={28} />
                 </div>
               </div>
             </div>

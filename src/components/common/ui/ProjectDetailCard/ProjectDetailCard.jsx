@@ -11,9 +11,9 @@ export default function ProjectDetailCard({ project, toggle, goToProjects }) {
       <div className='absolute inset-0 overflow-hidden'>
         <div className='w-[111.111%] h-[111.111%] scale-90 origin-top-left outline outline-2 outline-red-500'>
           {/* 기존 카드(배경/블러/라운드) */}
-          <div className='h-full w-full bg-zinc-900/90 backdrop-blur-sm rounded-xl overflow-hidden'>
+          <div className='h-full w-full bg-zinc-900/90 backdrop-blur-sm rounded-xl overflow-hidden flex flex-col'>
             {/* header */}
-            <div className='p-3 pl-6 bg-white/10 text-white/50 text-sm flex justify-between items-center'>
+            <div className='p-3 pl-6 bg-white/10 text-white/50 text-sm flex justify-between items-center shrink-0'>
               <p onClick={goToProjects}>프로젝트 상세보기</p>
               <MdClose
                 className='absolute right-4 z-[105] text-lg cursor-pointer
@@ -22,7 +22,7 @@ export default function ProjectDetailCard({ project, toggle, goToProjects }) {
             </div>
 
             {/* body */}
-            <div className='p-6 text-white box-border'>
+            <div className='p-6 text-white box-border flex-1 min-h-0 overflow-y-auto overflow-x-hidden'>
               <div className='flex flex-col gap-10'>
                 <div className='flex flex-col gap-4'>
                   <div>
