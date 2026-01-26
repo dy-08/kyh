@@ -53,27 +53,27 @@ export default function HeroSection({ onProjectClick }) {
   return (
     <section
       ref={heroRef}
-      className='h-svh rounded-3xl pb-4 flex flex-col justify-between relative box-border relative z-11'
+      className='lg:w-[100%] lg:m-auto lg:text-center h-svh rounded-3xl pb-4 flex flex-col justify-between relative box-border relative z-11'
       onClick={closeProfileModal}
     >
       {/* 상단 텍스트 */}
       <div>
         <div className='w-full text-white bg-[#010409] rounded-lg backdrop-blur-sm'>
-          <div className='leading-relaxed text-white/95 p-4'>
-            <div className='flex justify-first'>
+          <div className='leading-relaxed text-white/95 p-4 lg:p-8'>
+            <div className='flex justify-first lg:justify-center'>
               <span className='inline-flex items-center box-border gap-1 px-1 h-[34px] leading-none rounded-md font-semibold text-[#dfefea]'>
-                <span className='text-base font-semibold leading-none ml-1 mb-1'>
+                <span className='text-base lg:text-2xl font-semibold leading-none ml-1 mb-1'>
                   시도하고 개선하는 개발자
                 </span>
                 <Lottie
                   loop
                   animationData={lottieJson}
                   play
-                  style={{ width: 34, height: 34, display: "block" }}
+                  style={{ width: 40, height: 40, display: "block" }}
                 />
               </span>
             </div>
-            <div className='text-sm flex flex-col gap-[0.5px] mt-1 pl-2'>
+            <div className='text-sm lg:text-lg lg:mt-8 flex flex-col gap-[0.5px] mt-1 pl-2'>
               <p>안녕하세요, 권영호입니다.</p>
               <p>작은시도와 개선을 쌓으며 성장하고 있습니다.</p>
               <p>React로 UI와 데이터 흐름에 관심을 가지고,</p>
@@ -84,7 +84,7 @@ export default function HeroSection({ onProjectClick }) {
       </div>
 
       {/* 데모 */}
-      <div className='scale-90 relative top-12'>
+      <div className='scale-90 relative top-12 lg:top-[-50px]'>
         <HeroMiniDemo />
       </div>
 

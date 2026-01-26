@@ -194,7 +194,7 @@ export default function DevicePreviewSection({ ref }) {
   return (
     <>
       {/* mobile */}
-      <section>
+      <section className='lg:w-[50%] lg:m-auto'>
         <div ref={ref} className='w-full'>
           <div className='w-full scale-90 flex flex-col gap-2.5 justify-center items-cente'>
             {/* 공통 헤더 */}
@@ -264,7 +264,7 @@ export default function DevicePreviewSection({ ref }) {
         />
       )}
       {/* desktop */}
-      <section className='scale-90'>
+      <section className='scale-90 lg:w-[50%] lg:m-auto'>
         <div className='flex flex-col items-center' ref={desktopProjectsRef}>
           <p
             className='inline-flex justify-center items-center gap-2

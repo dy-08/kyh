@@ -2,19 +2,19 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 
 export default function ProfileModal() {
   return (
-    <div className='scale-90 w-full h-[78svh] flex flex-col text-white fixed top-0 left-0 right-0 bottom-46 bg-zinc-900/80 backdrop-blur-sm rounded-xl'>
+    <div className='scale-90 w-full lg:w-[30%] lg:left-[35%] h-[78svh] flex flex-col text-white fixed top-0 left-0 right-0 bottom-46 bg-zinc-900/80 backdrop-blur-sm rounded-xl'>
       <div className='w-full h-full flex flex-col justify-between'>
-        <div className='px-4 pt-4'>
-          <p className='text-[1.1rem] font-semibold flex justify-center'>
+        <div className='px-4 pt-4 lg:py-10'>
+          <p className='text-[1.1rem] lg:text-[1.4rem] font-semibold flex justify-center'>
             권영호
           </p>
-          <p className='text-[0.9rem] font-semibold text-white/50 flex justify-center'>
+          <p className='text-[0.9rem] lg:text-[1.2rem] font-semibold text-white/50 flex justify-center'>
             웹 프론트엔드 엔지니어
           </p>
         </div>
         <div className='backdrop-blur-lg flex mx-2 py-4 justify-around items-center rounded-lg backdrop-blur-xs'>
           {/* 사진 */}
-          <div className='w-[120px] h-[120px] rounded-sm overflow-hidden'>
+          <div className='w-[120px] h-[120px] lg:w-[180px] lg:h-[180px] rounded-sm overflow-hidden'>
             <img
               className='w-full object-cover'
               src='/images/avatar/kyh.jpg'
@@ -22,7 +22,7 @@ export default function ProfileModal() {
             />
           </div>
           <div
-            className='text-[0.9rem] px-2 box-border
+            className='text-[0.9rem] lg:text-[1.2rem] px-2 box-border
 '
           >
             {/* pi */}
