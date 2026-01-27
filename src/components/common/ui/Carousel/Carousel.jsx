@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import TechStackIcons from "../../../devicePreview/TechStackIcons";
 
 export default function Carousel({
@@ -11,16 +12,45 @@ export default function Carousel({
     toggle();
     setDesktopSelected(project);
   };
+
+  const viewportRef = useRef(null);
+
+  useEffect(() => {
+    const el = viewportRef.current;
+    if (!el) return;
+
+    const onWheel = (e) => {
+      const isVerticalWheel = Math.abs(e.deltaY) > Math.abs(e.deltaX);
+      if (!isVerticalWheel) return;
+
+      const maxScrollLeft = el.scrollWidth - el.clientWidth;
+      const atStart = el.scrollLeft <= 0;
+      const atEnd = el.scrollLeft >= maxScrollLeft - 1;
+
+      if (atStart && e.deltaY < 0) return;
+      if (atEnd && e.deltaY > 0) return;
+
+      e.preventDefault();
+      el.scrollLeft += e.deltaY;
+    };
+
+    el.addEventListener("wheel", onWheel, { passive: false });
+    return () => el.removeEventListener("wheel", onWheel);
+  }, []);
+
   return (
     <section>
       {/* 캐러셀 뷰포트 */}
-      <div className='w-full overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory px-6 overscroll-x-contain touch-pan-x'>
+      <div
+        className='w-full overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory px-6 overscroll-x-contain touch-pan-x'
+        ref={viewportRef}
+      >
         <div className='flex gap-4 p-4'>
           {projects.map((p, i) => (
             <div
               key={i}
               onClick={() => handleClick(p)}
-              className='w-[300px] shrink-0 snap-center'
+              className='w-[300px] lg:w-[400px] shrink-0 snap-center'
             >
               <div className='w-full aspect-[4/5] bg-zinc rounded-xl overflow-hidden'>
                 <img

@@ -196,12 +196,12 @@ export default function DevicePreviewSection({ ref }) {
       {/* mobile */}
       <section className='lg:w-[50%] lg:m-auto'>
         <div ref={ref} className='w-full'>
-          <div className='w-full scale-90 flex flex-col gap-2.5 justify-center items-cente'>
+          <div className='w-full scale-90 flex flex-col gap-2.5 justify-center items-cente lg:mt-20'>
             {/* 공통 헤더 */}
-            <p className='text-2xl font-semibold tracking-widest text-center text-white'>
+            <p className='text-2xl lg:text-3xl font-semibold tracking-widest text-center text-white'>
               프로젝트 한눈에 보기
             </p>
-            <p className='text-base text-center text-zinc-500 mb-4'>
+            <p className='text-base lg:text-lg text-center text-zinc-500 mb-4'>
               모바일부터, 웹까지.
               <br />
               <span className='block mt-0.5 mb-1'>
@@ -215,7 +215,7 @@ export default function DevicePreviewSection({ ref }) {
 
           <div
             ref={mobileProjectsRef}
-            className='w-full mt-8 scale-90 flex flex-col gap-3 justify-center items-cente relative'
+            className='w-full mt-8 lg:mt-20 scale-90 flex flex-col gap-3 justify-center items-cente relative'
           >
             {/* 모바일: 반응형 완료 프로젝트 */}
             <div className='flex flex-col items-center'>
@@ -224,7 +224,7 @@ export default function DevicePreviewSection({ ref }) {
   px-4 py-1.5 rounded-full
   bg-white/5 ring-1 ring-white/10
   backdrop-blur-md
-  text-sm text-zinc-300 mb-2'
+  text-sm text-zinc-300 mb-2 lg:px-12 lg:py-2 lg:text-base lg:mb-12'
               >
                 Mobile Preview
               </p>
@@ -271,7 +271,7 @@ export default function DevicePreviewSection({ ref }) {
   px-4 py-1.5 rounded-full
   bg-white/5 ring-1 ring-white/10
   backdrop-blur-md
-  text-sm text-zinc-300 mb-2'
+  text-sm text-zinc-300 mb-2 lg:px-12 lg:py-2 lg:text-base lg:mb-12'
           >
             Desktop Preview
           </p>

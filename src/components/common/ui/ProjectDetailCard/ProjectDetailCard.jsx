@@ -5,10 +5,10 @@ export default function ProjectDetailCard({ project, toggle, goToProjects }) {
   return (
     <section className='fixed inset-4 z-[100]' onClick={toggle}>
       {/* dim (dim은 모달 뒤에 까는 반투명 어두운 배경(딤 처리) */}
-      <div className='absolute inset-0 bg-black/40' />
+      <div className='absolute inset-0 bg-black/40 lg:inset-x-150 lg:top-20 lg:bottom-20' />
 
       {/* ✅ 보정 스케일 래퍼 */}
-      <div className='absolute inset-0 overflow-hidden'>
+      <div className='absolute inset-0 overflow-hidden lg:inset-x-150 lg:top-20 lg:bottom-20'>
         <div className='w-[111.111%] h-[111.111%] scale-90 origin-top-left outline outline-2 outline-red-500'>
           {/* 기존 카드(배경/블러/라운드) */}
           <div className='h-full w-full bg-zinc-900/90 backdrop-blur-sm rounded-xl overflow-hidden flex flex-col'>

@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className='w-full'>
-      <div className='w-full h-[64px] bg-[#010409]  text-[#919aa1] text-xs flex flex-col items-center justify-center gap-1'>
+      <div className='w-full h-[64px] lg:h-[100px] bg-[#010409] text-[#919aa1] text-xs lg:text-sm flex flex-col items-center justify-center gap-1'>
         <p>
           Copyright © 2026 by{" "}
           <a

@@ -84,7 +84,7 @@ export default function HeroSection({ onProjectClick }) {
       </div>
 
       {/* 데모 */}
-      <div className='scale-90 relative top-12 lg:top-[-50px]'>
+      <div className='scale-90 relative top-12 lg:top-[-30px]'>
         <HeroMiniDemo />
       </div>
 
