@@ -4,7 +4,7 @@ export default function DemoSection({ demoVideoSrc }) {
       <div className='flex justify-center py-2'>
         <div className='inline-flex items-center justify-center gap-2 lg:mb-4'>
           <span className='w-2 h-2 rounded-full bg-green-500 ring-1 ring-white/10' />
-          <p className='text-zinc-300 text-xs lg:text-base leading-none'>
+          <p className='text-zinc-300/90 text-xs lg:text-sm leading-none'>
             바이브코딩으로 만든 학원 출결관리 웹앱 데모입니다
           </p>
         </div>

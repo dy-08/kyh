@@ -1,7 +1,21 @@
-import TechStackIcons from "../../../devicePreview/TechStackIcons";
-import { MdClose } from "react-icons/md";
+import TechStackIcons from '../../../devicePreview/TechStackIcons';
+import { MdClose } from 'react-icons/md';
 
-export default function ProjectDetailCard({ project, toggle, goToProjects }) {
+export default function ProjectDetailCard({
+  project: {
+    title,
+    desc,
+    link,
+    id,
+    stack,
+    apis,
+    developers,
+    period,
+    highlights: { feature, tech, learn },
+  },
+  toggle,
+  goToProjects,
+}) {
   return (
     <section className='fixed inset-4 z-[100]' onClick={toggle}>
       {/* dim (dim은 모달 뒤에 까는 반투명 어두운 배경(딤 처리) */}
@@ -26,35 +40,33 @@ export default function ProjectDetailCard({ project, toggle, goToProjects }) {
               <div className='flex flex-col gap-10'>
                 <div className='flex flex-col gap-4'>
                   <div>
-                    <p className='text-2xl font-semibold'>{project.title}</p>
+                    <p className='text-2xl font-semibold'>{title}</p>
                   </div>
                   {/* DESC */}
                   <div className='text-sm'>
                     <p className='text-zinc-400'>프로젝트 설명</p>
-                    <p className='text-white/90 font-semibold'>
-                      {project.desc}
-                    </p>
+                    <p className='text-white/90 font-semibold'>{desc}</p>
                   </div>
                   {/* Link */}
                   <div className='text-sm'>
                     <p className='text-zinc-400'>배포사이트</p>
                     <p className='text-white/90 font-semibold'>
-                      <a href={project.link} target='_blank'>
-                        {project.id}
+                      <a href={link} target='_blank'>
+                        {id}
                       </a>
                     </p>
                   </div>
                   {/* Stack */}
                   <div className='text-sm'>
                     <p className='text-zinc-400'>기술 스택</p>
-                    <TechStackIcons stack={project.stack} size='28' />
+                    <TechStackIcons stack={stack} size='28' />
                   </div>
                   {/* APIs */}
-                  {project.apis?.length > 0 && (
+                  {apis?.length > 0 && (
                     <div className='text-sm'>
                       <p className='text-zinc-400'>APIs</p>
                       <ul>
-                        {project.apis.map((a) => (
+                        {apis.map((a) => (
                           <li key={a} className='text-white/90 font-semibold'>
                             {a}
                           </li>
@@ -66,11 +78,11 @@ export default function ProjectDetailCard({ project, toggle, goToProjects }) {
                   <div className='flex gap-6'>
                     <div className='text-sm flex flex-col'>
                       <p className='text-zinc-400'>참여인원</p>
-                      <p>1명</p>
+                      <p>{developers}명</p>
                     </div>
                     <div className='text-sm flex flex-col'>
                       <p className='text-zinc-400'>기간</p>
-                      <p>{project.period}</p>
+                      <p>{period}</p>
                     </div>
                   </div>
                 </div>
@@ -81,21 +93,21 @@ export default function ProjectDetailCard({ project, toggle, goToProjects }) {
                   <ul className='text-sm text-white font-semibold leading-relaxed flex flex-col gap-4'>
                     <li className='flex flex-col gap-1 items-start mt-6'>
                       <span className='shrink-0 text-xs font-semibold text-white/60 px-2 py-1 rounded-md bg-white/10'>
-                        Tech
+                        주요 기능
                       </span>
-                      <p>{project.highlights.tech}</p>
+                      <p>{feature}</p>
                     </li>
                     <li className='flex flex-col gap-1 items-start'>
                       <span className='shrink-0 text-xs font-semibold text-white/60 px-2 py-1 rounded-md bg-white/10'>
-                        Issue
+                        담당 역할
                       </span>
-                      <p>{project.highlights.issue}</p>
+                      <p>{tech}</p>
                     </li>
                     <li className='flex flex-col gap-1 items-start'>
                       <span className='shrink-0 text-xs font-semibold text-white/60 px-2 py-1 rounded-md bg-white/10'>
-                        Fix
+                        성과 및 배운점
                       </span>
-                      <p>{project.highlights.fix}</p>
+                      <p>{learn}</p>
                     </li>
                   </ul>
                 </div>

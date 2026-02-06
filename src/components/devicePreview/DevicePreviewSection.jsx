@@ -1,134 +1,113 @@
-import { useEffect, useState, useRef } from "react";
-import DeviceMockup from "../common/ui/DeviceMockup/DeviceMockup";
-import FeatureTabs from "./FeatureTabs";
-import ProjectCaptionCard from "./ProjectCaptionCard";
-import Carousel from "../common/ui/Carousel/Carousel";
-import DemoSection from "./DemoSection";
-import ProjectDetailCard from "../common/ui/ProjectDetailCard/ProjectDetailCard";
+import { useEffect, useState, useRef } from 'react';
+import DeviceMockup from '../common/ui/DeviceMockup/DeviceMockup';
+import FeatureTabs from './FeatureTabs';
+import ProjectCaptionCard from './ProjectCaptionCard';
+import Carousel from '../common/ui/Carousel/Carousel';
+import DemoSection from './DemoSection';
+import ProjectDetailCard from '../common/ui/ProjectDetailCard/ProjectDetailCard';
 
 const PROJECTS = [
+  // Featured / Others
   {
-    id: "VibeAttendanceSystem",
-    tabLabel: ["출결관리", "바이브코딩"],
-    image: "/images/projects/p-react-academy-attendance.jpg",
-    period: "2025.11 (5일)",
-    title: "Vibe Attendance System",
-    desc: "학원 출결 관리 풀스택 웹앱",
-    stack: [
-      "react",
-      "typescript",
-      "vite",
-      "sass",
-      "nodejs",
-      "express",
-      "prisma",
-      "postgresql",
-    ],
-    targets: ["mobile", "desktop"],
+    id: 'Shoppy',
+    developers: 1,
+    tabLabel: ['쇼핑몰', '개인'],
+    image: '/images/projects/p-react-shoppy.png',
+    period: '2026.02 – 진행 중',
+    title: 'Shoppy',
+    desc: 'Firebase 기반 쇼핑몰: 상품 조회, 장바구니 CRUD, 관리자 상품 등록',
+    stack: ['react', 'vite', 'tailwindCSS', 'firebase', 'cloudinary', 'vercel'],
+    targets: ['Featured'],
     isFeatured: true,
-    link: "https://academy-attendance.netlify.app/login",
+    link: 'https://shoppy-six.vercel.app/',
+    apis: ['Firebase Auth/DB', 'Cloudinary Unsigned Upload'],
     highlights: {
-      tech: "React+TS로 UI 구성, Node(Express)·Prisma로 API 연결, Postgres(Supabase) 연동",
-      issue:
-        "배포 환경변수 설정이 어긋나면 인증/데이터 연결이 끊겨 원인 파악이 어려움",
-      fix: "env·설정 절차를 문서화하고 프론트–API–DB 흐름을 정리해 재현 가능하게 개선",
+      feature:
+        '상품 조회, 장바구니 담기·수량 변경·삭제, 관리자 상품 등록 기능 구현',
+      tech: 'Firebase 기반으로 상품·장바구니 데이터 구조를 설계하고, React Query로 상태 동기화 및 invalidateQueries 처리',
+      learn:
+        '서버 없이도 Firebase를 활용해 쇼핑 흐름을 구현하며 인증과 데이터 흐름, 상태 동기화 설계를 익힘',
     },
   },
   {
-    id: "Youtube",
-    tabLabel: ["유투브", "클론코딩"],
-    image: "/images/projects/p-react-youtube.jpg",
-    period: "2025.12 - 현재",
-    title: "유튜브 클론코딩",
-    desc: "검색·상세·관련영상 재생 YouTube 클론",
-    stack: ["react", "vite", "tailwindCSS", "vercel"],
-    targets: ["mobile"],
-    link: "https://react-youtube-ashy.vercel.app/",
-    apis: ["YouTube Data API"],
+    id: 'VibeAttendanceSystem',
+    developers: 2,
+    tabLabel: ['출결관리', '팀플(2인)'],
+    image: '/images/projects/p-react-academy-attendance.jpg',
+    period: '2025.11 (5일)',
+    title: 'Vibe Attendance System',
+    desc: '학원의 출결을 효율적으로 관리하는 풀스택 웹앱',
+    stack: [
+      'react',
+      'typescript',
+      'vite',
+      'sass',
+      'nodejs',
+      'express',
+      'prisma',
+      'postgresql',
+    ],
+    targets: ['Featured'],
+    isFeatured: true,
+    link: 'https://academy-attendance.netlify.app/login',
     highlights: {
-      tech: "YouTube Data API로 검색·상세·관련영상 구현, Tailwind 반응형, TanStack Query 적용",
-      issue: "로딩/에러/빈 결과 처리 방식이 화면마다 달라 UX가 일관되지 않음",
-      fix: "Query 상태 기준으로 Skeleton·에러 UI를 통일하고 데이터 흐름(요청→표시)을 표준화",
+      feature:
+        '학생 출결 상태 변경 및 기록 관리 기능을 제공하는 학원 출결 관리 웹앱',
+      tech: '2인 팀 프로젝트로 기능 구조를 논의하고, Cursor AI를 활용해 React 화면과 API 연동 기능 구현에 참여',
+      learn:
+        '프롬프트를 통해 요구사항을 구체화하고, AI와 반복적인 수정 과정을 거쳐 기능을 완성하는 개발 흐름을 경험',
     },
   },
   {
-    id: "Todo",
-    tabLabel: ["투두", "프로젝트"],
-    image: "/images/projects/p-react-todo.jpg",
-    period: "2025.11 - 2025.12",
-    title: "투두 프로젝트",
-    desc: "CRUD·필터링 기능을 갖춘 투두 앱",
-    stack: ["react", "vite", "tailwindCSS", "netlify"],
-    targets: ["mobile"],
-    link: "https://react-vite-todos.netlify.app/",
+    id: 'Youtube',
+    developers: 1,
+    tabLabel: ['유튜브', '개인'],
+    image: '/images/projects/p-react-youtube.jpg',
+    period: '2025.12 - 2025.12',
+    title: '유튜브 클론코딩',
+    desc: '검색·상세·관련영상 재생 YouTube 클론',
+    stack: ['react', 'vite', 'tailwindCSS', 'vercel'],
+    targets: ['Others'],
+    link: 'https://react-youtube-ashy.vercel.app/',
+    apis: ['YouTube Data API'],
     highlights: {
-      tech: "React로 Todo CRUD 구현, 필터와 다크모드 적용, localStorage로 데이터 유지",
-      issue:
-        "원본 목록과 필터 목록을 함께 다루며 상태가 꼬이고 초기 복원 타이밍이 흔들림",
-      fix: "원본/파생 목록을 분리하고 useEffect로 저장·복원 순서를 정리해 상태 흐름을 안정화",
+      feature:
+        '영상 검색, 상세 페이지, 관련 영상 재생 기능을 제공하는 YouTube 클론',
+      tech: 'YouTube Data API 연동, React Query를 활용한 데이터 캐싱 및 로딩·에러 상태 분기 처리',
+      learn:
+        '외부 API 기반 화면 흐름을 구성하며 비동기 데이터 처리와 사용자 경험 설계의 중요성을 체감',
     },
   },
   {
-    id: "Erom",
-    tabLabel: "Erom",
-    image: "/images/projects/p-vj-erom.png",
-    period: "2025.08 (2일)",
-    title: "Erom Website",
-    desc: "기업형 데스크톱 인터랙션 정적 웹사이트",
-    stack: ["html", "css", "javascript", "github"],
-    targets: ["desktop"],
-    link: "https://dy-08.github.io/erom/",
+    id: 'Todo',
+    developers: 1,
+    tabLabel: ['투두', '개인'],
+    image: '/images/projects/p-react-todo.jpg',
+    period: '2025.11 - 2025.11',
+    title: '투두 프로젝트',
+    desc: 'CRUD·필터링 기능을 갖춘 투두 앱',
+    stack: ['react', 'vite', 'tailwindCSS', 'netlify'],
+    targets: ['Others'],
+    link: 'https://react-vite-todos.netlify.app/',
     highlights: {
-      tech: "Vanilla JS로 원페이지 스크롤 구성, 풀메뉴(GNB) 토글, 슬라이드 인터랙션 구현",
-      issue:
-        "스크롤 이벤트가 많아지면 성능이 떨어지고 메뉴 열림/닫힘 상태가 꼬이기 쉬움",
-      fix: "필요 구간에만 이벤트를 적용하고 메뉴 상태를 단일 기준으로 관리해 동작을 예측 가능하게",
-    },
-  },
-  {
-    id: "GUESS",
-    tabLabel: "GUESS",
-    image: "/images/projects/p-vj-guess.png",
-    period: "2025.08 (2일)",
-    title: "GUESS Landing Page",
-    desc: "슬라이드 배너 중심 랜딩페이지 클론",
-    stack: ["html", "css", "javascript", "github"],
-    targets: ["desktop"],
-    link: "https://dy-08.github.io/guess/",
-    highlights: {
-      tech: "Vanilla JS로 원페이지 랜딩 구성, 페이드 전환 무한 슬라이더 구현",
-      issue:
-        "무한 루프 구간에서 인덱스/전환 타이밍이 틀어지면 전환이 부자연스러워짐",
-      fix: "인덱스 상태로 전환 로직을 고정하고 처음/끝 연결 케이스를 처리해 자연스럽게 순환",
-    },
-  },
-  {
-    id: "Woodin",
-    tabLabel: "Woodin",
-    image: "/images/projects/p-vj-woodin.png",
-    period: "2025.08 (1주)",
-    title: "Woodin Clone Site",
-    desc: "휠 스크롤 원페이지 인터랙션 클론",
-    stack: ["html", "css", "javascript", "github"],
-    targets: ["desktop"],
-    link: "https://dy-08.github.io/woodin/",
-    highlights: {
-      tech: "휠 스크롤로 섹션 스냅 이동 구현, 영상과 호버 효과를 결합한 원페이지 클론",
-      issue:
-        "연속 휠 입력으로 섹션이 과도하게 이동해 UX가 흔들리고 제어가 어려움",
-      fix: "입력 간격/조건으로 이동을 제어하고 섹션·효과 로직을 분리해 유지보수성을 개선",
+      feature:
+        '할 일 추가·수정·삭제, 필터링, 다크모드 기능을 갖춘 Todo CRUD 앱',
+      tech: '원본 상태와 필터 상태를 분리해 관리하고 localStorage에 상태를 저장해 유지',
+      learn:
+        '상태 구조를 단순하게 설계하는 것이 버그를 줄이고 유지보수를 쉽게 만든다는 점을 경험',
     },
   },
 ];
-const MOBILE_PROJECTS = PROJECTS.filter((p) =>
-  p.targets.find((e) => e === "mobile"),
+const FEATURED_PROJECTS = PROJECTS.filter((p) =>
+  p.targets.find((e) => e === 'Featured'),
 );
-const DESKTOP_PROJECTS = PROJECTS.filter((p) =>
-  p.targets.find((e) => e === "desktop"),
+const OTHERS_PROJECTS = PROJECTS.filter((p) =>
+  p.targets.find((e) => e === 'Others'),
 );
 
-console.log("MOBILE_PROJECTS", MOBILE_PROJECTS);
-console.log("DESKTOP_PROJECTS", DESKTOP_PROJECTS);
+// 2026-02-06
+// MOBILE_PROJECTS => FEATURED_PROJECTS
+// DESKTOP_PROJECTS => OTHERS_PROJECTS
 
 export default function DevicePreviewSection({ ref }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -136,8 +115,8 @@ export default function DevicePreviewSection({ ref }) {
   const [renderIndex, setRenderIndex] = useState(0);
   const [isFading, setIsFading] = useState(false);
 
-  const activeProject = MOBILE_PROJECTS[activeIndex];
-  const renderProject = MOBILE_PROJECTS[renderIndex];
+  const activeProject = FEATURED_PROJECTS[activeIndex];
+  const renderProject = FEATURED_PROJECTS[renderIndex];
 
   useEffect(() => {
     if (activeIndex === renderIndex) return;
@@ -151,11 +130,11 @@ export default function DevicePreviewSection({ ref }) {
     return () => clearTimeout(t);
   }, [activeIndex, renderIndex]);
 
-  const demoVideoFileName = "vibe_demo_pc";
+  const demoVideoFileName = 'vibe_demo_pc';
   const demoVideoSrc = `/videos/${demoVideoFileName}.mp4`;
 
   const [isDetailOpen, setIsDetailOpen] = useState(false);
-  const [target, setTarget] = useState(""); // "mobile" | "desktop"
+  const [target, setTarget] = useState('');
 
   const [desktopSelected, setDesktopSelected] = useState(null);
   const toggleDetails = () => setIsDetailOpen((v) => !v);
@@ -163,18 +142,18 @@ export default function DevicePreviewSection({ ref }) {
   const mobileProjectsRef = useRef(null);
   const desktopProjectsRef = useRef(null);
 
-  const goToProjects = (to = "mobile") => {
-    const el = (to === "mobile" ? mobileProjectsRef : desktopProjectsRef)
+  const goToProjects = (to = 'mobile') => {
+    const el = (to === 'mobile' ? mobileProjectsRef : desktopProjectsRef)
       .current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
     el.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
+      behavior: 'smooth',
+      block: 'start',
     });
 
     setTimeout(() => {
-      window.scrollBy({ top: rect.top - 18.5, left: 0, behavior: "smooth" });
+      window.scrollBy({ top: rect.top - 18.5, left: 0, behavior: 'smooth' });
     }, 0);
   };
 
@@ -183,7 +162,7 @@ export default function DevicePreviewSection({ ref }) {
 
     if (isDetailOpen) {
       goToProjects(target);
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
     }
 
     return () => {
@@ -193,15 +172,15 @@ export default function DevicePreviewSection({ ref }) {
 
   return (
     <>
-      {/* mobile */}
+      {/* FEATURED_PROJECTS */}
       <section className='lg:w-[50%] lg:m-auto'>
         <div ref={ref} className='w-full'>
           <div className='w-full scale-90 flex flex-col gap-2.5 justify-center items-cente lg:mt-20'>
             {/* 공통 헤더 */}
-            <p className='text-2xl lg:text-3xl font-semibold tracking-widest text-center text-white'>
+            <p className='text-2xl font-semibold tracking-widest text-center text-white'>
               프로젝트 한눈에 보기
             </p>
-            <p className='text-base lg:text-lg text-center text-zinc-500 mb-4'>
+            <p className='text-base text-center text-zinc-500 mb-4'>
               모바일부터, 웹까지.
               <br />
               <span className='block mt-0.5 mb-1'>
@@ -217,7 +196,7 @@ export default function DevicePreviewSection({ ref }) {
             ref={mobileProjectsRef}
             className='w-full mt-8 lg:mt-20 scale-90 flex flex-col gap-3 justify-center items-cente relative'
           >
-            {/* 모바일: 반응형 완료 프로젝트 */}
+            {/* 대표 프로젝트 - 2*/}
             <div className='flex flex-col items-center'>
               <p
                 className='inline-flex justify-center items-center gap-2
@@ -226,7 +205,7 @@ export default function DevicePreviewSection({ ref }) {
   backdrop-blur-md
   text-sm text-zinc-300 mb-2 lg:px-12 lg:py-2 lg:text-base lg:mb-12'
               >
-                Mobile Preview
+                대표 프로젝트
               </p>
             </div>
             <DeviceMockup>
@@ -234,14 +213,14 @@ export default function DevicePreviewSection({ ref }) {
                 src={renderProject.image}
                 alt={renderProject.title}
                 className={`w-full h-full object-cover object-top transition-opacity duration-200 ${
-                  isFading ? "opacity-0" : "opacity-100"
+                  isFading ? 'opacity-0' : 'opacity-100'
                 }`}
               />
             </DeviceMockup>
             <FeatureTabs
               activeIndex={activeIndex}
               setActiveIndex={setActiveIndex}
-              tabs={MOBILE_PROJECTS.map((p) => p.tabLabel)}
+              tabs={FEATURED_PROJECTS.map((p) => p.tabLabel)}
             />
             <div className='w-full flex flex-col gap-1'>
               <ProjectCaptionCard
@@ -256,14 +235,14 @@ export default function DevicePreviewSection({ ref }) {
           </div>
         </div>
       </section>
-      {isDetailOpen && target === "mobile" && (
+      {isDetailOpen && target === 'mobile' && (
         <ProjectDetailCard
           project={activeProject}
           toggle={toggleDetails}
           goToProjects={goToProjects}
         />
       )}
-      {/* desktop */}
+      {/* OTHERS_PROJECTS */}
       <section className='scale-90 lg:w-[50%] lg:m-auto'>
         <div className='flex flex-col items-center' ref={desktopProjectsRef}>
           <p
@@ -273,19 +252,19 @@ export default function DevicePreviewSection({ ref }) {
   backdrop-blur-md
   text-sm text-zinc-300 mb-2 lg:px-12 lg:py-2 lg:text-base lg:mb-12'
           >
-            Desktop Preview
+            기타 프로젝트
           </p>
         </div>
         <div>
           <Carousel
-            projects={DESKTOP_PROJECTS}
+            projects={OTHERS_PROJECTS}
             setDesktopSelected={setDesktopSelected}
             setTarget={setTarget}
             toggle={toggleDetails}
           />
         </div>
       </section>
-      {isDetailOpen && target === "desktop" && (
+      {isDetailOpen && target === 'desktop' && (
         <ProjectDetailCard project={desktopSelected} toggle={toggleDetails} />
       )}
     </>

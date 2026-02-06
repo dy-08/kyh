@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { MiniCardSkeleton } from "../common/ui/MiniCard/MiniCardSkeleton";
-import MiniCard from "../common/ui/MiniCard/MiniCard";
+import { useEffect, useState } from 'react';
+import { MiniCardSkeleton } from '../common/ui/MiniCard/MiniCardSkeleton';
+import MiniCard from '../common/ui/MiniCard/MiniCard';
 
 export default function HeroMiniDemo() {
   const [showSkeleton, setShowSkeleton] = useState(false);
@@ -20,18 +20,17 @@ export default function HeroMiniDemo() {
         {/* skeleton  */}
         <div
           className={`absolute inset-0 transition-opacity duration-2000 ease-out ${
-            showSkeleton ? "opacity-100" : "opacity-0"
+            showSkeleton ? 'opacity-100' : 'opacity-0'
           }`}
         >
           <MiniCardSkeleton />
         </div>
-        {/* real card */}
+        {/* real */}
         <div
           className={`absolute inset-0 transition-all duration-2000 ease-out ${
-            showCard ? "opacity-100" : "opacity-0 inset-0"
+            showCard ? 'opacity-100' : 'opacity-0 inset-0'
           }`}
         >
-          {/* <MiniCard /> */}
           <MiniCard />
         </div>
       </div>

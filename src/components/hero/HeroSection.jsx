@@ -1,20 +1,20 @@
-import CTAButton from "../common/ui/CTAButton/CTAButton";
-import HeroMiniDemo from "./HeroMiniDemo";
-import ProfileModal from "../profile/ProfileModal";
-import { useEffect, useRef, useState } from "react";
-import Lottie from "react-lottie-player";
-import lottieJson from "../../lottie/programmingCode.json";
+import CTAButton from '../common/ui/CTAButton/CTAButton';
+import HeroMiniDemo from './HeroMiniDemo';
+import ProfileModal from '../profile/ProfileModal';
+import { useEffect, useRef, useState } from 'react';
+import Lottie from 'react-lottie-player';
+import lottieJson from '../../lottie/programmingCode.json';
 
 export default function HeroSection({ onProjectClick }) {
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
-  console.log("isProfileModalOpen", isProfileModalOpen);
+  console.log('isProfileModalOpen', isProfileModalOpen);
 
   useEffect(() => {
     const prev = document.body.style.overflow;
 
     //
     if (isProfileModalOpen) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
     }
 
     return () => {
@@ -24,9 +24,6 @@ export default function HeroSection({ onProjectClick }) {
 
   const [isDisabled, setIsDisabled] = useState(false);
   const handleClick = () => {
-    //
-    console.log("isDisabled", isDisabled);
-    console.log("isProfileModalOpen", isProfileModalOpen);
     setIsDisabled(true);
     setIsProfileModalOpen((p) => !p);
     gotoTop();
@@ -37,11 +34,11 @@ export default function HeroSection({ onProjectClick }) {
   const gotoTop = () => {
     const el = heroRef.current;
     if (!el) return;
-    console.log("scrollY", window.scrollY);
-    console.log("top", el.getBoundingClientRect().top);
+    console.log('scrollY', window.scrollY);
+    console.log('top', el.getBoundingClientRect().top);
 
     const y = window.scrollY + el.getBoundingClientRect().top - HEADER_OFFSET;
-    window.scrollTo({ top: y, behavior: "smooth" });
+    window.scrollTo({ top: y, behavior: 'smooth' });
   };
   const closeProfileModal = () => {
     if (isProfileModalOpen) {
@@ -62,18 +59,18 @@ export default function HeroSection({ onProjectClick }) {
           <div className='leading-relaxed text-white/95 p-4 lg:p-8'>
             <div className='flex justify-first lg:justify-center'>
               <span className='inline-flex items-center box-border gap-1 px-1 h-[34px] leading-none rounded-md font-semibold text-[#dfefea]'>
-                <span className='text-base lg:text-2xl font-semibold leading-none ml-1 mb-1'>
+                <span className='text-base lg:text-xl font-semibold leading-none ml-1 mb-1'>
                   시도하고 개선하는 개발자
                 </span>
                 <Lottie
                   loop
                   animationData={lottieJson}
                   play
-                  style={{ width: 40, height: 40, display: "block" }}
+                  style={{ width: 40, height: 40, display: 'block' }}
                 />
               </span>
             </div>
-            <div className='text-sm lg:text-lg lg:mt-8 flex flex-col gap-[0.5px] mt-1 pl-2'>
+            <div className='text-sm lg:text-sm lg:mt-8 flex flex-col gap-[0.5px] mt-1 pl-2'>
               <p>안녕하세요, 권영호입니다.</p>
               <p>작은시도와 개선을 쌓으며 성장하고 있습니다.</p>
               <p>React로 UI와 데이터 흐름에 관심을 가지고,</p>
@@ -92,13 +89,13 @@ export default function HeroSection({ onProjectClick }) {
       <div className='flex flex-col gap-4 items-center scale-90'>
         <CTAButton
           onClick={onProjectClick}
-          label={"프로젝트 보기"}
+          label={'프로젝트 보기'}
           isDisabled={isDisabled}
         />
         <CTAButton
           className='relative z-1'
           onClick={handleClick}
-          label={"프로필 보기"}
+          label={'프로필 보기'}
         />
         <p className='mt-2 text-center text-base text-zinc-400'>
           프로젝트들을 모아 정리했습니다.
